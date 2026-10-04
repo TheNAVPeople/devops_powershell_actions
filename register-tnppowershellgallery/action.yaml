@@ -1,0 +1,16 @@
+name: Register TNP Powershell gallery
+author: The 365 People
+inputs:
+  apikey:
+    description: Api key with read-access to the TNP PowerShell Gallery NuGet feed
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+    - name: Register repository
+      shell: powershell
+      run: ${{ github.action_path }}/../register-psrepository/register-psrepository.ps1 -Name TNPPSRepository -Location "https://tnpextensionsource.azurewebsites.net/api/v2/psmodules/nuget" -ApiKey "${{ inputs.apikey }}"
+     
+        

@@ -1,0 +1,11 @@
+name: Unregister TNP Powershell gallery
+author: The 365 People
+runs:
+  using: composite
+
+  steps:
+    - name: Unregister TNP PowerShell gallery
+      uses: ${{ github.action_path }}/../unregister-psrepository
+      with:
+        name: TNPPSRepository
+        

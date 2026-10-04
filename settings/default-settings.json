@@ -1,0 +1,19 @@
+{
+    "branches": [
+        {
+            "description": "Release",
+            "pattern": "(^master$)|(^main$)|(^repository\\\\)|(^repository\/)",
+            "preReleaseSuffix": ""
+        },
+        {
+            "description": "Development",
+            "pattern": "^develop$",
+            "preReleaseSuffix": "development"
+        },
+        {
+            "description": "UAT",
+            "pattern": "(^uat$)|(^release\\\\)|(^release\/)|(^uat\\\\)|(^uat\/)",
+            "preReleaseSuffix": "uat"
+        }
+    ]
+}

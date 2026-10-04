@@ -1,0 +1,29 @@
+name: Register Powershell modules repository
+author: The 365 People
+inputs:
+  name:
+    description: Repository name
+    required: true
+  location:
+    description: NuGet repository url
+    required: true
+  publishlocation:
+    description: NuGet package publishing url, if empty, location will be used
+    required: false
+  apikey:
+    description: NuGet api key    
+    required: false
+  user:
+    description: NuGet user name (basic authentication)
+    required: false
+  password:
+    description: NuGet user password (basic authentication)
+    required: false
+runs:
+  using: composite
+
+  steps:
+    - name: Register repository
+      shell: powershell
+      run: ${{ github.action_path }}/register-psrepository.ps1 -Name "${{ inputs.name }}" -Location "${{ inputs.location }}" -PublishLocation "${{ inputs.publishlocation }}" -ApiKey "${{ inputs.apikey }}" -User "${{ inputs.user }}" -Password "${{ inputs.password }}"
+      

@@ -1,0 +1,14 @@
+name: Unregister Powershell modules repository
+author: The 365 People
+inputs:
+  name:
+    description: Repository name
+    required: true
+runs:
+  using: composite
+
+  steps:
+    - name: Unregister repository
+      shell: powershell
+      run: ${{ github.action_path }}/unregister-psreposiory.ps1 -Name "${{ inputs.name }}"
+      

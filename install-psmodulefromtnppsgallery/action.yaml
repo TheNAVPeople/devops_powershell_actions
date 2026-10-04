@@ -1,0 +1,16 @@
+name: Install PowerShell module from the TNP PowerShell Gallery
+author: The 365 People
+inputs:
+  modulename:
+    description: PowerShell module name
+    required: true
+  apikey:
+    description: Api key with read-access to the TNP PowerShell Gallery NuGet feed
+    required: true
+runs:
+  using: composite
+
+  steps:
+    - name: Install module
+      shell: powershell
+      run: ${{ github.action_path }}/install-tnppsmodule.ps1 -ModuleName "${{ inputs.modulename }}" -Url "https://tnpextensionsource.azurewebsites.net/api/nuget/psmodules/index.json" -ApiKey "${{ inputs.apikey }}"

@@ -1,0 +1,25 @@
+name: Install PowerShell module from the PowerShell modules repository
+author: The 365 People
+inputs:
+  modulename:
+    description: PowerShell module name
+    required: true
+  repository:
+    description: Repository name
+    required: false
+  apikey:
+    description: NuGet api key    
+    required: false
+  user:
+    description: NuGet user name (basic authentication)
+    required: false
+  password:
+    description: NuGet user password (basic authentication)
+    required: false
+runs:
+  using: composite
+
+  steps:
+    - name: Install module
+      shell: powershell
+      run: ${{ github.action_path }}/install-psmodule.ps1 -ModuleName "${{ inputs.modulename }}" -Repository "${{ inputs.repository }}" -ApiKey "${{ inputs.apikey }}" -User "${{ inputs.user }}" -Password "${{ inputs.password }}"
